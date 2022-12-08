@@ -1,0 +1,4 @@
+- name: Ansible playbook to create all the roboshop project jobs in jenkins server.
+  hosts: localhost
+  roles:
+     - jenkins-jobs
