@@ -8,12 +8,9 @@
   loop:
     - demo
 
-- name: Create Jenkins Jobs
-  community.general.jenkins_job:
-    config: "{{ lookup('file', 'templates/pipeline-job.xml') }}"
-    name: "{{item.folderName}}/{{item.jobName}}"
-    password: admin
-    user: admin
-    url: http://172.31.5.112:8080
+- name: Create Pipeline Jobs
+  include_role:
+      name: jenkins-jobs
+      tasks_from: pipeline-job
   loop:
-    - { jobName: "sample3", folderName: "demo"}
+    - { jobName: "sample3", folderName: "demo", repoName: "learning-jenkins" }
