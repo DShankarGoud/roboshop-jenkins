@@ -12,5 +12,4 @@
   include_role:
       name: jenkins-jobs
       tasks_from: pipeline-job
-  loop:
-    - { jobName: "sample3", folderName: "demo", repoName: "learning-jenkins" }
+  loop: "{{pipeline_jobs}}"
