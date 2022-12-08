@@ -1,7 +1,19 @@
-- name: Create Jenkins jobs
+- name: Create Jenkins folders
   community.general.jenkins_job:
-    config: "{{ lookup('file', 'templates/pipeline-job.xml') }}"
-    name: sample3
+    config: "{{ lookup('file', 'templates/folder.xml') }}"
+    name: "{{item}}"
     password: admin
     user: admin
     url: http://172.31.5.112:8080
+  loop:
+    - demo
+
+- name: Create Jenkins jobs
+  community.general.jenkins_job:
+    config: "{{ lookup('file', 'templates/pipeline-job.xml') }}"
+    name: "{{item.jonName}}/{{iem.folderName}}"
+    password: admin
+    user: admin
+    url: http://172.31.5.112:8080
+  loop:
+    - { jobName: "sample3", folderName: "demo"}
