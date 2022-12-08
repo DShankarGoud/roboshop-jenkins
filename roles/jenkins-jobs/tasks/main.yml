@@ -1,4 +1,4 @@
-- name: Create Jenkins folders
+- name: Create Jenkins Folders
   community.general.jenkins_job:
     config: "{{ lookup('file', 'templates/folder.xml') }}"
     name: "{{item}}"
@@ -8,7 +8,7 @@
   loop:
     - demo
 
-- name: Create Jenkins jobs
+- name: Create Jenkins Jobs
   community.general.jenkins_job:
     config: "{{ lookup('file', 'templates/pipeline-job.xml') }}"
     name: "{{item.jobName}}/{{item.folderName}}"
