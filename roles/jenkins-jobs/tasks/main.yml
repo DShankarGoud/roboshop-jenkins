@@ -11,7 +11,7 @@
 - name: Create Jenkins Jobs
   community.general.jenkins_job:
     config: "{{ lookup('file', 'templates/pipeline-job.xml') }}"
-    name: "{{item.jobName}}/{{item.folderName}}"
+    name: "{{item.folderName}}/{{item.jobName}}"
     password: admin
     user: admin
     url: http://172.31.5.112:8080
