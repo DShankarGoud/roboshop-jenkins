@@ -25,7 +25,7 @@ def call() {
                 }
                 steps {
                     dir('ANSIBLE') {
-                        git branch: 'dev', url: 'https://github.com/DShankarGoud/roboshop-jenkins.git'
+                        git branch: 'dev', url: 'https://github.com/DShankarGoud/roboshop-ansible.git'
                     }
                 }
             }
@@ -38,7 +38,7 @@ def call() {
                 }
                 steps {
                     dir('ANSIBLE') {
-                        git branch: 'dev', url: 'https://github.com/DShankarGoud/roboshop-jenkins.git'
+                        git branch: 'dev', url: 'https://github.com/DShankarGoud/roboshop-ansible.git'
                     }
                 }
             }
