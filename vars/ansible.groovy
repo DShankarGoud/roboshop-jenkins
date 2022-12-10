@@ -17,7 +17,7 @@ def call() {
 
         stages {
 
-            stage('Checkout Code - DEV') {
+            stage('CheckOut Code - DEV') {
                 when {
                     expression {
                         ENV == "dev"
@@ -30,7 +30,7 @@ def call() {
                 }
             }
 
-            stage('Checkout Code - PROD') {
+            stage('CheckOut Code - PROD') {
                 when {
                     expression {
                         ENV == "prod"
