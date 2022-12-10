@@ -17,6 +17,32 @@ def call() {
 
         stages {
 
+            stage('Checkout Code - DEV') {
+                when {
+                    expression {
+                        ENV == "dev"
+                    }
+                }
+                steps {
+                    dir('ANSIBLE') {
+                        git branch: 'dev', url: 'https://github.com/DShankarGoud/roboshop-jenkins.git'
+                    }
+                }
+            }
+
+            stage('Checkout Code - PROD') {
+                when {
+                    expression {
+                        ENV == "prod"
+                    }
+                }
+                steps {
+                    dir('ANSIBLE') {
+                        git branch: 'dev', url: 'https://github.com/DShankarGoud/roboshop-jenkins.git'
+                    }
+                }
+            }
+
             stage ('Create Instance') {
                 steps {
                     script {
@@ -27,7 +53,10 @@ def call() {
 
             stage ('Run Ansible Playbook') {
                 steps {
-                    sh 'ansible-playbook  -i inv roboshop.yml -e ENV=${ENV} -e ansible_user=${SSH_USR} -e ansible_password=${SSH_PSW} -e HOST=${COMPONENT} -e ROLE_NAME=${COMPONENT}'
+                    dir('ANSIBLE') {
+                        sh 'ansible-playbook  -i inv roboshop.yml -e ENV=${ENV} -e ansible_user=${SSH_USR} -e ansible_password=${SSH_PSW} -e HOST=${COMPONENT} -e ROLE_NAME=${COMPONENT}'
+                    }
+
                 }
             }
         }
