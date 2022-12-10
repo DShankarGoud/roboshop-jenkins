@@ -25,7 +25,7 @@ def call() {
                 }
                 steps {
                     dir('ANSIBLE') {
-                        git branch: 'dev', url: 'https://github.com/DShankarGoud/roboshop-ansible.git'
+                        git branch: 'dev', url: 'https://github.com/raghudevopsb64/roboshop-ansible.git'
                     }
                 }
             }
@@ -38,28 +38,28 @@ def call() {
                 }
                 steps {
                     dir('ANSIBLE') {
-                        git branch: 'main', url: 'https://github.com/DShankarGoud/roboshop-ansible.git'
+                        git branch: 'main', url: 'https://github.com/raghudevopsb64/roboshop-ansible.git'
                     }
                 }
             }
 
-            stage ('Create Instance') {
-                steps {
-                    script {
-                        ec2InstanceCreate.create("${COMPONENT}", "${ENV}")
-                    }
-                }
-            }
-
-            stage ('Run Ansible Playbook') {
+            stage('Create Instance') {
                 steps {
                     dir('ANSIBLE') {
-                        sh 'ansible-playbook  -i inv roboshop.yml -e ENV=${ENV} -e ansible_user=${SSH_USR} -e ansible_password=${SSH_PSW} -e HOST=${COMPONENT} -e ROLE_NAME=${COMPONENT}'
+                        sh 'bash create-ec2-with-env.sh ${COMPONENT} ${ENV}'
                     }
-
                 }
             }
-        }
-    }
 
+            stage('Run Ansible Playbook') {
+                steps {
+                    dir('ANSIBLE') {
+                        sh 'ansible-playbook -i inv roboshop.yml -e ENV=${ENV} -e ansible_user=${SSH_USR} -e ansible_password=${SSH_PSW} -e HOST=${COMPONENT} -e ROLE_NAME=${COMPONENT}'
+                    }
+                }
+            }
+
+        }
+
+    }
 }
