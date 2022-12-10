@@ -5,7 +5,7 @@
 
 - name: Create Jenkins Jobs
   community.general.jenkins_job:
-    config: "{{ lookup('file', 'templates/pipeline-job.xml') }}"
+    config: "{{ lookup('file', '/tmp/pipeline-job.xml') }}"
     name: "{{item.folderName}}/{{item.jobName}}"
     password: admin
     user: admin
