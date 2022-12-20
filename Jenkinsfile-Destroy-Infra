@@ -14,7 +14,7 @@ pipeline {
         stage('CART') {
           steps {
             dir('CART') {
-              git branch: 'main', url: 'https://github.com/raghudevopsb64/cart-infra.git'
+              git branch: 'main', url: 'https://github.com/DShankarGoud/cart-infra.git'
               sh 'terraform init -backend-config=env-${ENV}/backend.tfvars'
               sh 'terraform destroy -auto-approve -var-file=env-${ENV}/${ENV}.tfvars'
             }
@@ -24,7 +24,7 @@ pipeline {
         stage('CART') {
           steps {
             dir('CART') {
-              git branch: 'main', url: 'https://github.com/raghudevopsb64/cart-infra.git'
+              git branch: 'main', url: 'https://github.com/DShankarGoud/cart-infra.git'
               sh 'terraform init -backend-config=env-${ENV}/backend.tfvars'
               sh 'terraform destroy -auto-approve -var-file=env-${ENV}/${ENV}.tfvars'
             }
@@ -34,7 +34,7 @@ pipeline {
         stage('CATALOGUE') {
           steps {
             dir('CATALOGUE') {
-              git branch: 'main', url: 'https://github.com/raghudevopsb64/catalogue-infra.git'
+              git branch: 'main', url: 'https://github.com/DShankarGoud/catalogue-infra.git'
               sh 'terraform init -backend-config=env-${ENV}/backend.tfvars'
               sh 'terraform destroy -auto-approve -var-file=env-${ENV}/${ENV}.tfvars'
             }
@@ -44,7 +44,7 @@ pipeline {
         stage('USER') {
           steps {
             dir('USER') {
-              git branch: 'main', url: 'https://github.com/raghudevopsb64/user-infra.git'
+              git branch: 'main', url: 'https://github.com/DShankarGoud/user-infra.git'
               sh 'terraform init -backend-config=env-${ENV}/backend.tfvars'
               sh 'terraform destroy -auto-approve -var-file=env-${ENV}/${ENV}.tfvars'
             }
@@ -54,7 +54,7 @@ pipeline {
         stage('FRONTEND') {
           steps {
             dir('FRONTEND') {
-              git branch: 'main', url: 'https://github.com/raghudevopsb64/frontend-infra.git'
+              git branch: 'main', url: 'https://github.com/DShankarGoud/frontend-infra.git'
               sh 'terraform init -backend-config=env-${ENV}/backend.tfvars'
               sh 'terraform destroy -auto-approve -var-file=env-${ENV}/${ENV}.tfvars'
             }
@@ -64,7 +64,7 @@ pipeline {
         stage('PAYMENT') {
           steps {
             dir('PAYMENT') {
-              git branch: 'main', url: 'https://github.com/raghudevopsb64/payment-infra.git'
+              git branch: 'main', url: 'https://github.com/DShankarGoud/payment-infra.git'
               sh 'terraform init -backend-config=env-${ENV}/backend.tfvars'
               sh 'terraform destroy -auto-approve -var-file=env-${ENV}/${ENV}.tfvars'
             }
@@ -74,7 +74,7 @@ pipeline {
         stage('SHIPPING') {
           steps {
             dir('SHIPPING') {
-              git branch: 'main', url: 'https://github.com/raghudevopsb64/shipping-infra.git'
+              git branch: 'main', url: 'https://github.com/DShankarGoud/shipping-infra.git'
               sh 'terraform init -backend-config=env-${ENV}/backend.tfvars'
               sh 'terraform destroy -auto-approve -var-file=env-${ENV}/${ENV}.tfvars'
             }
