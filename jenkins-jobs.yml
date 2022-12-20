@@ -16,5 +16,3 @@
         - { jobName: "shipping", folderName: "Infrastructure", repoName: "shipping-infra", fileNme: "Jenkinsfile" }
         - { jobName: "payment", folderName: "Infrastructure", repoName: "payment-infra", fileNme: "Jenkinsfile" }
         - { jobName: "DESTROY", folderName: "Infrastructure", repoName: "roboshop-jenkins", fileNme: "Jenkinsfile-Destroy-Infra" }
-
-
