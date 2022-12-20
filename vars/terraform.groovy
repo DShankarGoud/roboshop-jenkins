@@ -1,15 +1,13 @@
 def call() {
-  pipeline {
+    pipeline {
+        agent any
 
-    agent any
-
-    options {
+        options {
             ansiColor('xterm')
         }
 
         parameters {
             string(name: 'ENV', defaultValue: '', description: 'Which Environment?')
-            string(name: 'VERSION', defaultValue: '', description: 'Which Version?')
         }
 
         environment {
@@ -18,16 +16,16 @@ def call() {
 
         stages {
 
-            stage ("Terraform INIT") {
-                steps{
+            stage('Terraform INIT') {
+                steps {
                     sh '''
                       terraform init -backend-config=env-${ENV}/backend.tfvars
                     '''
                 }
             }
 
-            stage ("Terraform Apply") {
-                steps{
+            stage('Terraform Apply') {
+                steps {
                     sh '''
                       terraform apply -auto-approve -var-file=env-${ENV}/${ENV}.tfvars
                     '''
