@@ -1,7 +1,16 @@
-- name: Create Template File
+- name: Create Template file
   template:
-     src: pipeline-job.xml
-     dest: /tmp
+    src: pipeline-job.xml
+    dest: /tmp
+
+- name: Check if Job Exists
+  community.general.jenkins_job_info:
+    name: "{{item.folderName}}/{{item.jobName}}"
+    user: admin
+    password: admin
+    url: http://172.31.5.112:8080
+  register: job_info
+  ignore_errors: yes
 
 - name: Create Jenkins Jobs
   community.general.jenkins_job:
@@ -10,3 +19,4 @@
     password: admin
     user: admin
     url: http://172.31.5.112:8080
+  when: job_info.faile
