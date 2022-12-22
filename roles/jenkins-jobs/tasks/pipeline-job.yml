@@ -19,4 +19,4 @@
     password: admin
     user: admin
     url: http://172.31.5.112:8080
-  when: job_info.faile
+  when: job_info.failed
