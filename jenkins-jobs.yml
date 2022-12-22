@@ -15,4 +15,4 @@
         - { jobName: "shipping", folderName: "Infrastructure", repoName: "shipping-infra", fileName: "Jenkinsfile" }
         - { jobName: "payment", folderName: "Infrastructure", repoName: "payment-infra", fileName: "Jenkinsfile" }
         - { jobName: "DESTROY", folderName: "Infrastructure", repoName: "roboshop-jenkins", fileName: "Jenkinsfile-Destroy-Infra" }
-
+        - { jobName: "transit-gw", folderName: "Infrastructure", repoName: "terraform-vpc-transit-setup", fileName: "Jenkinsfile" }
