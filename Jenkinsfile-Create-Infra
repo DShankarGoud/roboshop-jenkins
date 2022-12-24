@@ -17,7 +17,6 @@ pipeline {
       }
     }
 
-
     stage('ALL-COMPONENTS') {
 
       parallel {
@@ -84,5 +83,4 @@ pipeline {
       }
     }
   }
-
 }
