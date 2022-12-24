@@ -75,7 +75,7 @@ pipeline {
 
     }
 
-    stage('DEAFULT-TGW') {
+    stage('DEFAULT-TGW') {
        steps {
          dir('DEFAULT-TGW') {
            git branch: 'main', url: 'https://github.com/DShankarGoud/terraform-vpc-transit-setup.git'
