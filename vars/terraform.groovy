@@ -19,7 +19,7 @@ def call() {
             stage('Terraform INIT') {
                 steps {
                     sh '''
-                      terraform init -data.tf-config=env-${ENV}/backend.tf.tfvars
+                      terraform init -data.tf-config=env-${ENV}/backend.tfvars
                     '''
                 }
             }
