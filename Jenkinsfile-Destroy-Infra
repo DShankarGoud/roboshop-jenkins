@@ -72,20 +72,25 @@ pipeline {
         }
 
       }
-
     }
 
-    stage('DEFAULT-TGW') {
-       steps {
-         dir('DEFAULT-TGW') {
-           git branch: 'main', url: 'https://github.com/DShankarGoud/terraform-vpc-transit-setup.git'
-           sh 'terraform init -backend-config=env-${ENV}/backend.tfvars'
-           sh 'terraform destroy -auto-approve -var-file=env-${ENV}/${ENV}.tfvars'
-         }
-       }
+        stage('DEAFULT-TGW') {
+          steps {
+            dir('DEAFULT-TGW') {
+              git branch: 'main', url: 'https://github.com/DShankarGoud/terraform-vpc-transit-setup.git'
+              sh 'terraform init -backend-config=env-${ENV}/backend.tfvars'
+              sh 'terraform destroy -auto-approve -var-file=env-${ENV}/${ENV}.tfvars'
+            }
+          }
+
     }
 
   }
 
-}
+  post {
+    always {
+      cleanWs()
+    }
+  }
 
+}
